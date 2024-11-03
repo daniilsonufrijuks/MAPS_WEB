@@ -9,3 +9,19 @@ body {
     bottom: 0;
     width: 100%;
 }
+
+#button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+#button:hover {
+    background-color: #f9f9f9;
+}

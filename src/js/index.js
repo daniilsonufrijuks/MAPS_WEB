@@ -1,12 +1,25 @@
 var map = L.map('map').setView([56.946285, 24.105078], 8);
 
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+var lightLayer = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 }).addTo(map);
 
-// L.marker([51.5, -0.09]).addTo(map)
-//     .bindPopup('A pretty CSS popup.<br> Easily customizable.')
-//     .openPopup();
+var darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+});
+
+var isDarkMode = false;
+
+document.getElementById('button').addEventListener('click', function() {
+    if (isDarkMode) {
+        map.removeLayer(darkLayer);
+        map.addLayer(lightLayer);
+    } else {
+        map.removeLayer(lightLayer);
+        map.addLayer(darkLayer);
+    }
+    isDarkMode = !isDarkMode;
+});
 
 
 // Fetch the JSON file
