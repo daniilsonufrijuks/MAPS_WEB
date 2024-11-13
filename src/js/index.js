@@ -10,6 +10,7 @@ var darkLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/
 
 var isDarkMode = false;
 
+//  dark mode checking
 document.getElementById('button').addEventListener('click', function() {
     if (isDarkMode) {
         map.removeLayer(darkLayer);
@@ -20,25 +21,6 @@ document.getElementById('button').addEventListener('click', function() {
     }
     isDarkMode = !isDarkMode;
 });
-
-
-// Fetch the JSON file
-// fetch('../json/map.json')
-//     .then(response => response.json())
-//     .then(data => {
-//         // Loop through the features array
-//         data.features.forEach(function(feature) {
-//             // Extract coordinates and properties
-//             var coordinates = feature.geometry.coordinates;
-//             var properties = feature.properties;
-
-//             // Add a marker for each feature
-//             L.marker([coordinates[1], coordinates[0]]).addTo(map)
-//                 .bindPopup(properties.PLACENAME)
-//                 .addTo(map);
-//         });
-//     })
-//     .catch(error => console.error('Error fetching the JSON file:', error));
 
 
 // Define the source and destination coordinate systems
@@ -59,7 +41,7 @@ fetch('../json/map.json')
 
             console.log('Original coordinates:', coordinates); // Debug log
 
-            // Transform the coordinates
+            // Transform the coordinates using proj4
             var transformedCoordinates = proj4(sourceProj, destProj, coordinates);
 
             console.log('Transformed coordinates:', transformedCoordinates); // Debug log
